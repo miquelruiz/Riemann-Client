@@ -1,4 +1,5 @@
-package Riemann::Client::Transport::TCP;
+package # hide from CPAN
+    Riemann::Client::Transport::TCP;
 
 use Moo;
 

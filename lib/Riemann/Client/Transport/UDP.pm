@@ -1,4 +1,5 @@
-package Riemann::Client::Transport::UDP;
+package # hide from CPAN
+    Riemann::Client::Transport::UDP;
 
 use Moo;
 

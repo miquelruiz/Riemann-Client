@@ -1,4 +1,5 @@
-package Riemann::Client::Transport;
+package # hide from CPAN
+    Riemann::Client::Transport;
 
 use Moo;
 use IO::Socket::INET;
