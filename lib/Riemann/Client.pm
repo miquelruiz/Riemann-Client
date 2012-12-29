@@ -13,14 +13,16 @@ has proto => (is => 'rwp', default => sub { 'tcp' }      );
 has transport => (is => 'rwp', lazy => 1, builder => 1);
 
 sub send {
-    my ($self, %opts) = @_;
+    my ($self, @opts) = @_;
 
     # Set default stuff
-    $opts{host} = hostfqdn() unless defined $opts{host};
-    $opts{time} = time()     unless defined $opts{time};
-    $opts{metric_d} = delete $opts{metric} if $opts{metric};
+    map {
+        $_->{host} = hostfqdn() unless defined $_->{host};
+        $_->{time} = time()     unless defined $_->{time};
+        $_->{metric_d} = delete $_->{metric} if $_->{metric};
+    } @opts;
 
-    return $self->transport->send({events => [\%opts]});
+    return $self->transport->send({events => \@opts});
 }
 
 sub query {

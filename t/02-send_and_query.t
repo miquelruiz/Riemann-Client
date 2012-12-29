@@ -27,12 +27,28 @@ SKIP: {
         description => 'a',
     );
 
-    ok ($r->send(%msg), "Message sent over tcp");
+
+    ok ($r->send(\%msg), "Message sent over tcp");
 
     my $res = $r->query('host = "' . hostfqdn() . '"');
     ok($res->{ok}, "Query is ok");
     is(ref $res->{events}, 'ARRAY', "Got an array as query response");
     is(ref $res->{events}->[0], 'Event', "Array of events");
+
+    my %msg2 = (
+        service => $rand->randpattern('cCcnCnc'),
+        metric  => rand(10),
+        state   => 'warn',
+        description => 'b',
+    );
+    my %msg3 = (
+        service => $rand->randpattern('cCcnCnc'),
+        metric  => rand(10),
+        state   => 'crit',
+        description => 'c',
+    );
+
+    ok($r->send(\%msg2, \%msg3), 'Send multiple messages at once');
 
     undef $r;
 
@@ -42,11 +58,11 @@ SKIP: {
         proto => 'udp',
     );
 
-    ok ($rudp->send(%msg), "Message sent over udp");
+    ok ($rudp->send(\%msg), "Message sent over udp");
 
     # Make the message too bit to send over UDP
     $msg{description} = 'a' x 20000;
-    dies_ok { $rudp->send(%msg) } "Send dies with message too long";
+    dies_ok { $rudp->send(\%msg) } "Send dies with message too long";
 
     $res = $rudp->query('host = "' . hostfqdn() . '"');
     ok($res->{ok}, "Queries still working");
