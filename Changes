@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    - TCP transport was always used
+    - Error in documentation fixed
 
 0.01      2012-12-29 01:32:28 Europe/Madrid
 Initial release

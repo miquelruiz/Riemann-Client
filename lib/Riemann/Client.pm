@@ -112,10 +112,10 @@ The Riemann server. Defaults to C<localhost>
 
 Port where the Riemann server is listening. Defaults to C<5555>
 
-=head3 use_udp
+=head3 proto
 
 By default Riemann::Client will use TCP to communicate over the network. You
-can force the usage of UDP setting this argument to true.
+can force the usage of UDP setting this argument to 'udp'.
 UDP datagrams have a maximum size of 16384 bytes by Riemann's default. If you
 force the usage of UDP and try to send a larger message, an exception will be
 raised.
