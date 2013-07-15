@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    - Protocol spec updated
     - TCP transport was always used
     - Error in documentation fixed
 

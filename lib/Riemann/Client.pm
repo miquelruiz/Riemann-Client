@@ -152,6 +152,7 @@ This is the specification of the messages in L<Google::ProtocolBuffers> format:
       optional string description = 5;
       repeated string tags = 7;
       optional float ttl = 8;
+      repeated Attribute attributes = 9;
 
       optional sint64 metric_sint64 = 13;
       optional double metric_d = 14;
@@ -168,6 +169,11 @@ This is the specification of the messages in L<Google::ProtocolBuffers> format:
       repeated State states = 4;
       optional Query query = 5;
       repeated Event events = 6;
+    }
+
+    message Attribute {
+      required string key = 1;
+      optional string value = 2;
     }
 
 =head1 SEE ALSO
