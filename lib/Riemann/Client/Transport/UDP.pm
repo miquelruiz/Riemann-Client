@@ -21,7 +21,7 @@ sub send {
 
     # Write to the socket
     my $sock = $self->socket;
-    print $sock $encoded or die $!;
+    $sock->send($encoded) or die $!;
 }
 
 1;
