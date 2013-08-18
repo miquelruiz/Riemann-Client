@@ -17,6 +17,10 @@ sub send {
     # Prepend the length to the binary message
     my $to_send = pack('N', $e_length) . $encoded;
     my $sock    = $self->socket;
+    unless ($sock->connected) {
+        $self->clear_socket;
+        $sock = $self->socket;
+    }
 
     # Write to the socket
     print $sock $to_send or die $!;
@@ -26,6 +30,9 @@ sub send {
     my $r = read $sock, $res_length, 4;
     die $! unless defined $r;
     $res_length = unpack('N', $res_length);
+
+    # Something went really wrong. Maybe the connection was closed
+    die "Did not receive a response" unless $res_length;
 
     # Read the actual response
     my $recv;

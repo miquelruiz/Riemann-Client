@@ -119,11 +119,14 @@ can force the usage of UDP setting this argument to 'udp'.
 UDP datagrams have a maximum size of 16384 bytes by Riemann's default. If you
 force the usage of UDP and try to send a larger message, an exception will be
 raised.
+In TCP mode, the client will try to reconnect to the server in case the
+connection is lost.
 
 =head2 send
 
 Accepts a list of events (as hashrefs) and sends them over the wire to the
-server.
+server. In TCP mode, it will die if there are errors while communicating with
+the server. In case the connection is lost, it will try to reconnect.
 
 =head2 query
 

@@ -7,7 +7,7 @@ use IO::Socket::INET;
 
 has host   => (is => 'ro', required => 1);
 has port   => (is => 'ro', required => 1);
-has socket => (is => 'lazy');
+has socket => (is => 'lazy', clearer => 1);
 
 sub send {
     die 'Not implemented';
