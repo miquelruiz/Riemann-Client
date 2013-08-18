@@ -2,6 +2,11 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.03      2013-08-18 14:04:37 Europe/Madrid
+    - Auto reconnect if the connection is lost
+    - Die if no response is received from server
+    - Tests using Test::TCP
+
 0.02      2013-07-16 00:17:19 Europe/Madrid
     HUGE thank you to tazle for spotting the issues and providing several
     pull requests:
