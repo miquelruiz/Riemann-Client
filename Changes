@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    - Protocol spec updated
+    - Add tag support
 
 0.03      2013-08-18 14:04:37 Europe/Madrid
     - Auto reconnect if the connection is lost

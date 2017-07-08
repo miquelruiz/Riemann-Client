@@ -75,6 +75,7 @@ Riemann::Client - A Perl client for the Riemann event system
         host    => 'web3', # defaults to Net::Domain::hostfqdn()
         service => 'api latency',
         state   => 'warn',
+        tags    => ['api', 'backend'],
         metric  => 63.5,
         time    => time() - 10, # defaults to time()
         description => '63.5 milliseconds per request',
@@ -134,50 +135,9 @@ Accepts a string and returns a message.
 
 =head1 MESSAGE SPECS
 
-This is the specification of the messages in L<Google::ProtocolBuffers> format:
+The specification of the messages in L<Google::ProtocolBuffers> format is at:
+L<https://github.com/riemann/riemann-java-client/blob/master/riemann-java-client/src/main/proto/riemann/proto.proto>
 
-    message State {
-      optional int64 time = 1;
-      optional string state = 2;
-      optional string service = 3;
-      optional string host = 4;
-      optional string description = 5;
-      optional bool once = 6;
-      repeated string tags = 7;
-      optional float ttl = 8;
-    }
-
-    message Event {
-      optional int64 time = 1;
-      optional string state = 2;
-      optional string service = 3;
-      optional string host = 4;
-      optional string description = 5;
-      repeated string tags = 7;
-      optional float ttl = 8;
-      repeated Attribute attributes = 9;
-
-      optional sint64 metric_sint64 = 13;
-      optional double metric_d = 14;
-      optional float metric_f = 15;
-    }
-
-    message Query {
-      optional string string = 1;
-    }
-
-    message Msg {
-      optional bool ok = 2;
-      optional string error = 3;
-      repeated State states = 4;
-      optional Query query = 5;
-      repeated Event events = 6;
-    }
-
-    message Attribute {
-      required string key = 1;
-      optional string value = 2;
-    }
 
 =head1 SEE ALSO
 
@@ -185,11 +145,11 @@ This is the specification of the messages in L<Google::ProtocolBuffers> format:
 
 =item *
 
-All About Riemann L<http://aphyr.github.com/riemann/>
+All About Riemann L<http://riemann.io/>
 
 =item *
 
-Ruby client L<https://github.com/aphyr/riemann-ruby-client>
+Ruby client L<https://github.com/riemann/riemann-ruby-client>
 
 =back
 
@@ -205,7 +165,7 @@ Miquel Ruiz <mruiz@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Miquel Ruiz.
+This software is copyright (c) 2017 by Miquel Ruiz.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
