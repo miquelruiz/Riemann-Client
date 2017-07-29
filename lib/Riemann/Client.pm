@@ -57,6 +57,8 @@ __END__
 
 Riemann::Client - A Perl client for the Riemann event system
 
+=for html <a href="https://travis-ci.org/miquelruiz/Riemann-Client"><img src="https://travis-ci.org/miquelruiz/Riemann-Client.svg?branch=master"></a>
+
 =head1 SYNOPSIS
 
     use Riemann::Client;
@@ -205,7 +207,7 @@ Miquel Ruiz <mruiz@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Miquel Ruiz.
+This software is copyright (c) 2017 by Miquel Ruiz.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
